@@ -1,11 +1,18 @@
-package collections;
+package collections.models;
 
 import java.util.Objects;
+
 
 public class Manga implements Comparable<Manga> {
     private Long id;
     private String name;
     private double price;
+    private int amount;
+
+    public Manga(Long id, String name, double price, int amount) {
+        this(id, name, price);
+        this.amount = amount;
+    }
 
     public Manga(Long id, String name, double price) {
         Objects.requireNonNull(id, "Id not be null");
@@ -18,14 +25,14 @@ public class Manga implements Comparable<Manga> {
 
     @Override
     public int compareTo(Manga o) {
-        if(this.id < o.id){
-            return -1;
-        }
-        if(this.id.equals(o.getId())){
-            return 0;
-        }
-        return 1;
-
+//        if(this.id < o.id){
+//            return -1;
+//        }
+//        if(this.id.equals(o.getId())){
+//            return 0;
+//        }
+//        return 1;
+        return this.getName().compareTo(o.getName());
 //        return this.id.compareTo(o.getId());
 //        return Double.valueOf(this.price).compareTo(o.getPrice());
     }
@@ -35,12 +42,12 @@ public class Manga implements Comparable<Manga> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Manga manga = (Manga) o;
-        return id == manga.id && Double.compare(price, manga.price) == 0 && Objects.equals(name, manga.name);
+        return Objects.equals(id, manga.id) && Objects.equals(name, manga.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -49,10 +56,19 @@ public class Manga implements Comparable<Manga> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", amount=" + amount +
                 '}';
     }
 
-    public long getId() {
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Long getId() {
         return id;
     }
 
