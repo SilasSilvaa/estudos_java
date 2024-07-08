@@ -18,6 +18,6 @@ public class OuterClassesTest2 {
     }
     public static void main(String[] args) {
         OuterClassesTest2 outerClassesTest2 = new OuterClassesTest2();
-        outerClassesTest2.print();
+        outerClassesTest2.print("Param");
     }
 }

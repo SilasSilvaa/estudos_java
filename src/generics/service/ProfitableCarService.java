@@ -19,6 +19,7 @@ public class ProfitableCarService {
         return car;
     }
 
+
     public void returnRentCar(Car car){
         System.out.println("Returning car");
         cars.add(car);
