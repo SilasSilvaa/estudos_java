@@ -11,6 +11,7 @@ public class StreamTest16 {
         sumStreamIterate(num);
         sumParallelStreamIterate(num);
         sumLongStreamIterate(num);
+        sumParallelLongStreamIterate(num);
     }
 
     private static void sumFor(long num){
@@ -27,7 +28,7 @@ public class StreamTest16 {
     }
 
     private static void sumStreamIterate(long num){
-        System.out.println("Sum for");
+        System.out.println("Sum Stream for");
         long init = System.currentTimeMillis();
 
         long result = Stream.iterate(1L, i -> i + 1).limit(num).reduce(0L, Long::sum);
@@ -37,7 +38,7 @@ public class StreamTest16 {
     }
 
     private static void sumParallelStreamIterate(long num){
-        System.out.println("Sum for");
+        System.out.println("Sum Parallel Stream for");
         long init = System.currentTimeMillis();
 
         long result = Stream.iterate(1L, i -> i + 1).limit(num).parallel().reduce(0L, Long::sum);
@@ -47,7 +48,7 @@ public class StreamTest16 {
     }
 
     private static void sumLongStreamIterate(long num){
-        System.out.println("Sum for");
+        System.out.println("Sum Long Stream for");
         long init = System.currentTimeMillis();
 
         long result = LongStream.rangeClosed(1L, num).reduce(0L, Long::sum);
@@ -57,7 +58,7 @@ public class StreamTest16 {
     }
 
     private static void sumParallelLongStreamIterate(long num){
-        System.out.println("Sum for");
+        System.out.println("Sum Parallel Long Stream for");
         long init = System.currentTimeMillis();
 
         long result = LongStream.rangeClosed(1L, num).parallel().reduce(0L, Long::sum);
